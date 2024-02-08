@@ -1,5 +1,5 @@
 """
-URL configuration for personal_portfolio_v2_remake project.
+URL configuration for private_therapist_portfolio project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,8 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+from blog.views import post_list, post_detail
+from portfolio.views import portfolio, project_detail, experience_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', post_list),
+    path('blog/<int:post_id>/', post_detail, name='post_detail'),
+    path('/project/<int:project_id>/', project_detail, name='project_detail'),
+    path('/experience/<int:experience_id>/', experience_detail, name='experience_detail'),
+    path('', portfolio)
 ]
+
+
+# Add this for serving media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
