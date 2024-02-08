@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn personal_portfolio_v2_remake.wsgi:application
