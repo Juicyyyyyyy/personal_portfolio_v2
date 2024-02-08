@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
+from django import forms
+from django.core.validators import EmailValidator
+
 
 class ProfessionalExperience(models.Model):
     id = models.AutoField(primary_key=True)

@@ -3,72 +3,152 @@
 {% block content %}
 
     <!-- Hero Section -->
-    <section class="hero text-white py-16 relative overflow-hidden custom-hero" id="dynamic-bg">
+    <section id="hero">
+    <div class="parallax-wrapper hero-style">
+  <div class="hero parallax-content">
+    <img src="https://images5.alphacoders.com/868/868941.jpg" alt="Photo of city during a sunset by Sterling Davis" />
+    <div class="hero__title">
+      <h1 class="text-indigo-900">Corentin Dupaigne</h1>
+      <p class="">Junior Backend Developer & Software Engineer based in Paris</p>
+    </div>
+  </div>
+</div>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
 
-        <div class="content-container">
-            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
-                <!-- Text Section -->
-                <div class="animated-text md:w-1/2 mb-8 md:mb-0">
-                    <!-- GSAP animations make these texts fade in and possibly slide from the side -->
-                    <h1 class="text-5xl font-extrabold mb-4 text-center md:text-left leading-tight gsap-fade-slide">
-                        <span id="typed-output"></span>
-                    </h1>
-                    <h2 class="text-3xl mb-6 text-center md:text-left leading-snug gsap-fade-slide-delay">Professional
-                        Backend Web
-                        Developer</h2>
-                    <p class="text-lg mb-8 text-center md:text-left leading-relaxed gsap-fade-slide-delay-more">With a
-                        solid background in computer science and a passion for crafting efficient solutions, I am
-                        committed to creating optimized digital landscapes. Currently honing my skills at F2I
-                        Vincennes.</p>
-                    <a href="#about"
-                       class="bg-indigo-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-800 transition-colors duration-300 inline-block mx-auto md:mx-0 md:ml-0 gsap-scale-hover mx-auto">Discover
-                        More</a>
+    :root {
+      --hero-gap: 60px;
+    }
 
-                </div>
+    * {
+      box-sizing: border-box;
+    }
 
-                <!-- Image Section -->
-                <div class="md:w-1/2 interactive-img-container">
-                    <!-- The image could have a WebGL shader effect or a dynamic texture overlay using Three.js -->
-                    <img src="https://corentindupaigne.herokuapp.com/static/img/img.png" alt="Corentin Dupaigne"
-                         id="interactive-img"
-                         class="rounded-full shadow-lg mx-auto w-2/3 md:w-3/5 gsap-rotate-hover"/>
-                </div>
-            </div>
-        </div>
+    .hero-style {
+      font-family: "Lora", serif;
+    }
 
-        <style>
-            .hero {
-                position: relative;
-                background-color: #1a202c; /* Dark background color for better contrast with particles */
-                color: white;
-                padding: 4rem 0;
-            }
-        </style>
+    .hero-style h1 {
+      font-size: calc(0.5rem + 8vmin);
+      font-weight: 600;
+      font-style: italic;
+    }
 
-        <!-- Scripts -->
-        <script>
-            // GSAP Animations
-            gsap.from('.gsap-fade-slide', {duration: 1.2, x: -100, opacity: 0, delay: 0.5});
-            gsap.from('.gsap-fade-slide-delay', {duration: 1.2, x: -100, opacity: 0, delay: 0.7});
-            gsap.from('.gsap-fade-slide-delay-more', {duration: 1.2, x: -100, opacity: 0, delay: 0.9});
+    .hero-style h2 {
+      font-size: calc(0.8rem + 4vmin);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.2;
+    }
 
-            // Typed.js Initialization
-            var options = {
-                strings: ["Corentin Dupaigne"],
-                typeSpeed: 50,
-                backSpeed: 25,
-                backDelay: 1000,
-                startDelay: 500,
-                loop: false,
-                showCursor: true,
-                cursorChar: "|",
-                autoInsertCss: true
-            };
-            var typed = new Typed("#typed-output", options);
+    .hero-style p {
+      font-size: calc(0.8rem + 1.25vmin);
+      line-height: 1.65;
+    }
 
-        </script>
+    .hero-style .caption {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: white;
+      z-index: 2;
+      font-size: 0.6rem;
+    }
 
-    </section>
+    .hero-style .parallax-wrapper {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      perspective: 10px;
+    }
+
+    .hero-style .parallax-content {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--hero-gap));
+    }
+
+    .hero-style .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-style .hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110%;
+      object-fit: cover;
+      z-index: 1;
+      transform: translateZ(1px);
+    }
+
+    .hero-style .hero__title {
+      color: white;
+      z-index: 2;
+      text-align: center;
+      transform: translateZ(-2px) scale(1.2);
+    }
+
+    .hero-style .hero__title p {
+      margin-top: 0.5rem;
+      font-size: calc(0.6rem + 0.75vmin);
+    }
+
+    .hero-style .hero__title a {
+      color: white;
+    }
+
+    .hero-style .hero::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: 0 100%;
+      transform: translateZ(8px);
+      pointer-events: none;
+      background-image: linear-gradient(
+        to bottom,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 0.013) 8%,
+        hsla(0, 0%, 0%, 0.049) 14.8%,
+        hsla(0, 0%, 0%, 0.104) 20.8%,
+        hsla(0, 0%, 0%, 0.175) 26%,
+        hsla(0, 0%, 0%, 0.259) 30.8%,
+        hsla(0, 0%, 0%, 0.352) 35.3%,
+        hsla(0, 0%, 0%, 0.45) 39.8%,
+        hsla(0, 0%, 0%, 0.55) 44.5%,
+        hsla(0, 0%, 0%, 0.648) 49.5%,
+        hsla(0, 0%, 0%, 0.741) 55.2%,
+        hsla(0, 0%, 0%, 0.825) 61.7%,
+        hsla(0, 0%, 0%, 0.896) 69.2%,
+        hsla(0, 0%, 0%, 0.951) 77.9%,
+        hsla(0, 0%, 0%, 0.987) 88.1%,
+        hsl(0, 0%, 0%) 100%
+      );
+      z-index: 3;
+    }
+
+    .hero-style .main-content {
+      position: relative;
+      margin: 0 auto;
+      padding: var(--hero-gap) 2rem;
+      max-width: 725px;
+      background-color: white;
+    }
+
+    .hero-style .main-content > * + * {
+      margin-top: 2rem;
+    }
+
+  </style>
+</section>
 
     <!-- About Me Section -->
     <section id="about" class="bg-gray-100 py-32">
@@ -390,7 +470,7 @@
     </section>
 
     <!-- Contact Me Section -->
-    <section class="mb-32 text-center ">
+    <section id="contact-me" class="mb-32 text-center ">
         <div class="py-12 md:px-12">
             <div class="container mx-auto xl:px-32">
                 <div class="grid items-center lg:grid-cols-2">
@@ -435,20 +515,6 @@
                                     >Message</label
                                     >
                                 </div>
-                                <div
-                                        class="mb-6 inline-block min-h-[1.5rem] justify-center pl-[1.5rem] md:flex">
-                                    <input
-                                            class="relative float-left mt-[0.15rem] mr-[6px] -ml-[1.5rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-primary dark:checked:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
-                                            type="checkbox"
-                                            value=""
-                                            id="exampleCheck96"
-                                            checked/>
-                                    <label
-                                            class="inline-block pl-[0.15rem] hover:cursor-pointer"
-                                            for="exampleCheck96">
-                                        Send me a copy of this message
-                                    </label>
-                                </div>
                                 <button
                                         type="button"
                                         class="inline-block w-full rounded bg-indigo-600 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white hover:bg-blue-600 focus:bg-blue-600 focus:outline-none focus:ring-0 lg:mb-0"
@@ -463,7 +529,7 @@
                         <div
                                 class="relative h-[700px] rounded-lg shadow-lg dark:shadow-black/20">
                             <iframe
-                                    src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10502.324442106245!2d2.4382853!3d48.8471283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e672a39beac54d%3A0x40b82c3688b3740!2s94300%20Vincennes!5e0!3m2!1sfr!2sfr!4v1707402589325!5m2!1sfr!2sfr"
                                     class="absolute left-0 top-0 h-full w-full rounded-lg"
                                     frameborder="0"
                                     allowfullscreen></iframe>
