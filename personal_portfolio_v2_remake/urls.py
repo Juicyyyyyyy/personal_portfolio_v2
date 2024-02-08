@@ -26,8 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', post_list),
     path('blog/<int:post_id>/', post_detail, name='post_detail'),
-    path('/project/<int:project_id>/', project_detail, name='project_detail'),
-    path('/experience/<int:experience_id>/', experience_detail, name='experience_detail'),
+    path('project/<int:project_id>/', project_detail, name='project_detail'),
+    path('experience/<int:experience_id>/', experience_detail, name='experience_detail'),
     path('', portfolio)
 ]
 
