@@ -3,152 +3,67 @@
 {% block content %}
 
     <!-- Hero Section -->
-    <section id="hero">
-    <div class="parallax-wrapper hero-style">
-  <div class="hero parallax-content">
-    <img src="https://images5.alphacoders.com/868/868941.jpg" alt="Photo of city during a sunset by Sterling Davis" />
-    <div class="hero__title">
-      <h1 class="text-indigo-900">Corentin Dupaigne</h1>
-      <p class="">Junior Backend Developer & Software Engineer based in Paris</p>
-    </div>
-  </div>
-</div>
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
+    <section class="hero text-white py-16 relative overflow-hidden custom-hero" id="dynamic-bg">
 
-    :root {
-      --hero-gap: 60px;
-    }
+        <div class="content-container">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
+                <!-- Text Section -->
+                <div class="animated-text md:w-1/2 mb-8 md:mb-0">
+                    <!-- GSAP animations make these texts fade in and possibly slide from the side -->
+                    <h1 class="text-5xl font-extrabold mb-4 text-center md:text-left leading-tight gsap-fade-slide">
+                        <span id="typed-output"></span>
+                    </h1>
+                    <h2 class="text-3xl mb-6 text-center md:text-left leading-snug gsap-fade-slide-delay">Junior Backend Developer & Software Engineer based in Paris.</h2>
 
-    * {
-      box-sizing: border-box;
-    }
+                    <a href="#about"
+                       class="bg-indigo-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-800 transition-colors duration-300 inline-block mx-auto md:mx-0 md:ml-0 gsap-scale-hover mx-auto">Discover
+                        More</a>
 
-    .hero-style {
-      font-family: "Lora", serif;
-    }
+                </div>
 
-    .hero-style h1 {
-      font-size: calc(0.5rem + 8vmin);
-      font-weight: 600;
-      font-style: italic;
-    }
+                <!-- Image Section -->
+                <div class="md:w-1/2 interactive-img-container">
+                    <!-- The image could have a WebGL shader effect or a dynamic texture overlay using Three.js -->
+                    <img src="https://corentindupaigne.herokuapp.com/static/img/img.png" alt="Corentin Dupaigne"
+                         id="interactive-img"
+                         class="rounded-full shadow-lg mx-auto w-2/3 md:w-3/5 gsap-rotate-hover"/>
+                </div>
+            </div>
+        </div>
 
-    .hero-style h2 {
-      font-size: calc(0.8rem + 4vmin);
-      font-weight: 600;
-      font-style: italic;
-      line-height: 1.2;
-    }
+        <style>
+            .hero {
+                position: relative;
+                background-color: #1a202c; /* Dark background color for better contrast with particles */
+                color: white;
+                padding: 4rem 0;
+            }
+        </style>
 
-    .hero-style p {
-      font-size: calc(0.8rem + 1.25vmin);
-      line-height: 1.65;
-    }
+        <!-- Scripts -->
+        <script>
+            // GSAP Animations
+            gsap.from('.gsap-fade-slide', {duration: 1.2, x: -100, opacity: 0, delay: 0.5});
+            gsap.from('.gsap-fade-slide-delay', {duration: 1.2, x: -100, opacity: 0, delay: 0.7});
+            gsap.from('.gsap-fade-slide-delay-more', {duration: 1.2, x: -100, opacity: 0, delay: 0.9});
 
-    .hero-style .caption {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      color: white;
-      z-index: 2;
-      font-size: 0.6rem;
-    }
+            // Typed.js Initialization
+            var options = {
+                strings: ["Corentin Dupaigne"],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 1000,
+                startDelay: 500,
+                loop: false,
+                showCursor: true,
+                cursorChar: "|",
+                autoInsertCss: true
+            };
+            var typed = new Typed("#typed-output", options);
 
-    .hero-style .parallax-wrapper {
-      height: 100vh;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      perspective: 10px;
-    }
+        </script>
 
-    .hero-style .parallax-content {
-      position: relative;
-      width: 100%;
-      height: calc(100vh - var(--hero-gap));
-    }
-
-    .hero-style .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-style .hero img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 110%;
-      object-fit: cover;
-      z-index: 1;
-      transform: translateZ(1px);
-    }
-
-    .hero-style .hero__title {
-      color: white;
-      z-index: 2;
-      text-align: center;
-      transform: translateZ(-2px) scale(1.2);
-    }
-
-    .hero-style .hero__title p {
-      margin-top: 0.5rem;
-      font-size: calc(0.6rem + 0.75vmin);
-    }
-
-    .hero-style .hero__title a {
-      color: white;
-    }
-
-    .hero-style .hero::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform-origin: 0 100%;
-      transform: translateZ(8px);
-      pointer-events: none;
-      background-image: linear-gradient(
-        to bottom,
-        hsla(0, 0%, 0%, 0) 0%,
-        hsla(0, 0%, 0%, 0.013) 8%,
-        hsla(0, 0%, 0%, 0.049) 14.8%,
-        hsla(0, 0%, 0%, 0.104) 20.8%,
-        hsla(0, 0%, 0%, 0.175) 26%,
-        hsla(0, 0%, 0%, 0.259) 30.8%,
-        hsla(0, 0%, 0%, 0.352) 35.3%,
-        hsla(0, 0%, 0%, 0.45) 39.8%,
-        hsla(0, 0%, 0%, 0.55) 44.5%,
-        hsla(0, 0%, 0%, 0.648) 49.5%,
-        hsla(0, 0%, 0%, 0.741) 55.2%,
-        hsla(0, 0%, 0%, 0.825) 61.7%,
-        hsla(0, 0%, 0%, 0.896) 69.2%,
-        hsla(0, 0%, 0%, 0.951) 77.9%,
-        hsla(0, 0%, 0%, 0.987) 88.1%,
-        hsl(0, 0%, 0%) 100%
-      );
-      z-index: 3;
-    }
-
-    .hero-style .main-content {
-      position: relative;
-      margin: 0 auto;
-      padding: var(--hero-gap) 2rem;
-      max-width: 725px;
-      background-color: white;
-    }
-
-    .hero-style .main-content > * + * {
-      margin-top: 2rem;
-    }
-
-  </style>
-</section>
+    </section>
 
     <!-- About Me Section -->
     <section id="about" class="bg-gray-100 py-32">
